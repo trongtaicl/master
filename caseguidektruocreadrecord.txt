@@ -1,0 +1,225 @@
+Date : 2017-08-02 17:53:51
+   2017-08-02 17:43:48:284	Test Passed at : 2017-08-02 17:44:49:1010 ; 3GX2-0020(03_TagstoReadYet-PartialEmpty)  The test is PASSED
+      Test Started	3GX2-0020(03_TagstoReadYet-PartialEmpty)
+      ICC Interface 	Log Passing Data property set to False
+      SCRIPT_WRITER	5.63.00
+      PROFILE	not applicable
+      REFERENCE	3GX2-0020
+      REVISION	1.19
+      OBJECTIVE	To ensure the reader supports a non-empty TagsToRead in its database and returns the listed data into the next DEKs using the TagsToReadYet listTo ensure the reader returns the data expected by the terminal in accordance to the presence of the data fields in the TagsToReadYet and send split DEK accordinglyTo ensure the data are returned in the expected orderTo ensure the mechanism works for Mag-Stripe transaction.
+      PASS CRITERIA	Case 1* Before issuance of the first ReadRecord command, the reader shall send a DEK signal including DataToSend template containing, DEK Signal Identifier, ApplicationLabel, API, LanguagePreference, with the actual values returned during the Select Final and empty DataNeeded template.* Upon reception of a DET containing PTFWF (with value '01'), and after completion of all ReadRecord commands as per the AFL, the reader shall send a CCC command.Case 2* Prior to issuing the GetPO Command, the reader shall send a DEK signal including DataToSend template containing the DEK Signal Identifier and DataNeeded template containing the AmountAuthorized ('9F02'). The AIP and AFL shall not be present in the DataToSend template.* Upon reception of a DET containing the AmountAuthorized and PTFWF, the reader shall send out a GetPO Command with the AmountAuthorized as part of the PDOL data.* Before issuance of the first ReadRecord command, the reader shall send a second DEK signal including DataToSend template containing AIP, AFL with the actual values returned during the GetPO and empty DataNeeded template.* Upon completion of all ReadRecord commands as per the AFL, the reader shall send a CCC command.Case 3* Prior to issuing the GetPO Command, the reader shall send a DEK signal including DataToSend template containing, DEK Signal Identifier, ApplicationLabel, API, LanguagePreference with the actual values returned during the Select Final and DataNeeded template containing the AmountAuthorized ('9F02'). The AIP and AFL shall not be present in the DataToSend template.* Upon reception of a DET containing the AmountAuthorized and PTFWF, the reader shall send out a GetPO Command with the AmountAuthorized as part of the PDOL data.* Before issuance of the first ReadRecord command, the reader shall send a second DEK signal including DataToSend template containing AIP, AFL with the actual values returned during the GetPO and empty DataNeeded template. The ApplicationLabel, API, LanguagePreference shall have been removed from TagsToReadYet and shall not be present in the DataToSend template.* Upon completion of all ReadRecord commands as per the AFL, the reader shall send a CCC command.For all cases, Upon reception of the card response to CCC, the reader shall send an OUT Signal. In OPS, Status shall indicate 'ONLINE REQUEST'.
+      APPLICABILITY CONDITIONS	None
+      TERMINAL CONFIGURATION	PPMS_DE5
+      ISSUER PROCESSING	Please use the following XML file reference: 3GX2-0020
+      PRE-PROCESSING	The Transaction Related Data (provided in the ACT signal) must include the following :Amount Authorized with zero length
+      Command sent by Reader	
+      PURCH	COLD
+      CARD ACTIVATED	
+      Command sent by Reader	00A404000E325041592E5359532E444446303100
+      PURCH	WARM
+      C-APDU	00 A4 04 00 0E 32 50 41 - 59 2E 53 59 53 2E 44 44
+      C-APDU	46 30 31 00
+      SELECT	
+         CLA	00
+         INS	A4
+         P1	04
+         P2	00
+         Lc	0E
+         Data	
+            FID	325041592E5359532E4444463031
+         Le	00
+      PURCH	(PayPass_Select_PPSE_all)
+      R-APDU	6F 3D 84 0E 32 50 41 59 - 2E 53 59 53 2E 44 44 46
+      R-APDU	30 31 A5 2B BF 0C 28 61 - 0C 4F 07 A0 00 00 00 04
+      R-APDU	10 10 87 01 01 61 0C 4F - 07 A0 00 00 00 04 30 60
+      R-APDU	87 01 03 61 0A 4F 05 B0 - 12 34 56 78 87 01 09 90
+      R-APDU	00
+      SELECT Emulated Response	
+         BERTLVData	6F3D840E325041592E5359532E4444463031A52BBF0C28610C4F07A0000000041010870101610C4F07A0000000043060870103610A4F05B012345678870109
+            6F	840E325041592E5359532E4444463031A52BBF0C28610C4F07A0000000041010870101610C4F07A0000000043060870103610A4F05B012345678870109
+               84	325041592E5359532E4444463031
+               A5	BF0C28610C4F07A0000000041010870101610C4F07A0000000043060870103610A4F05B012345678870109
+                  BF0C	610C4F07A0000000041010870101610C4F07A0000000043060870103610A4F05B012345678870109
+                     61	4F07A0000000041010870101
+                        4F	A0000000041010
+                        87	01
+                     61	4F07A0000000043060870103
+                        4F	A0000000043060
+                        87	03
+                     61	4F05B012345678870109
+                        4F	B012345678
+                        87	09
+         CC	9000
+      Command sent by Reader	00A4040007A000000004101000
+      C-APDU	00 A4 04 00 07 A0 00 00 - 00 04 10 10 00
+      SELECT	
+         CLA	00
+         INS	A4
+         P1	04
+         P2	00
+         Lc	07
+         Data	
+            FID	A0000000041010
+         Le	00
+      PURCH	(PayPass_Select_MCD_BFOC)
+      R-APDU	6F 35 84 07 A0 00 00 00 - 04 10 10 A5 2A 87 01 01
+      R-APDU	50 07 4D 41 45 53 54 52 - 4F 5F 2D 02 65 6E 9F 11
+      R-APDU	01 01 9F 38 0B 9F 02 06 - 9F 33 03 9C 01 9F 02 06
+      R-APDU	BF 0C 04 5F 53 01 30 90 - 00
+      SELECT Emulated Response	
+         BERTLVData	6F358407A0000000041010A52A87010150074D41455354524F5F2D02656E9F1101019F380B9F02069F33039C019F0206BF0C045F530130
+            6F	8407A0000000041010A52A87010150074D41455354524F5F2D02656E9F1101019F380B9F02069F33039C019F0206BF0C045F530130
+               84	A0000000041010
+               A5	87010150074D41455354524F5F2D02656E9F1101019F380B9F02069F33039C019F0206BF0C045F530130
+                  87	01
+                  50	MAESTRO
+                  5F2D	en
+                  9F11	01
+                  9F38	9F02069F33039C019F0206
+                  BF0C	5F530130
+                     5F53	0
+         CC	9000
+      Command sent by Reader	80A800001283100000000015000000000000000000150000
+      C-APDU	80 A8 00 00 12 83 10 00 - 00 00 00 15 00 00 00 00
+      C-APDU	00 00 00 00 00 15 00 00
+      GET_PROCESSING_OPTIONS	
+         CLA	80
+         INS	A8
+         P1	00
+         P2	00
+         Lc	12
+         PDOL	
+            Tag	83
+            Length	10
+            Data	00000000150000000000000000001500
+         Le	00
+      PURCH	(PayPass_GPO_Mstripe_PDOL)
+      R-APDU	77 0A 82 02 00 00 94 04 - 08 01 01 00 90 00
+      GET_PROCESSING_OPTIONS Emulated Response	
+         BERTLVData	w#0A#82#02#00#00#94#04#08#01#01#00
+            77	#82#02#00#00#94#04#08#01#01#00
+               82	0000000000000000
+                  I	0
+                  OSDAIS	0
+                  ODDAIS	0
+                  CVIS	0
+                  TRMITBP	0
+                  IAIS	0
+                  RFU	0
+                  CDAIS	0
+                  RFU	00000000
+               94	#08#01#01#00
+                  File	#08#01#01#00
+                     File Identifier	00001000
+                        SFI	00001
+                        RFU	000
+                     First_record	01
+                     Last_record	01
+                     Number_record	00
+         CC	9000
+      Command sent by Reader	00B2010C00
+      C-APDU	00 B2 01 0C 00
+      READ_RECORD	
+         CLA	00
+         INS	B2
+         P1	01
+         P2	
+            SFI	00001
+            P1_Definition	100
+         Le	00
+      PURCH	(PayPass_RR_Mstripe_UDOL)
+      R-APDU	70 36 9F 65 02 00 0E 9F - 66 02 0E 70 9F 6B 13 54
+      R-APDU	13 33 90 00 00 15 13 D4 - 91 21 01 90 00 99 00 00
+      R-APDU	00 0F 9F 67 01 03 9F 69 - 0F 9F 6A 04 9F 7E 01 9F
+      R-APDU	02 06 5F 2A 02 9F 1A 02 - 90 00
+      READ_RECORD Emulated Response	
+         BERTLVData	70369F6502000E9F66020E709F6B135413339000001513D49121019000990000000F9F6701039F690F9F6A049F7E019F02065F2A029F1A02
+            70	9F6502000E9F66020E709F6B135413339000001513D49121019000990000000F9F6701039F690F9F6A049F7E019F02065F2A029F1A02
+               9F65	000E
+               9F66	0E70
+               9F6B	5413339000001513D49121019000990000000F
+               9F67	03
+               9F69	9F6A049F7E019F02065F2A029F1A02
+         CC	9000
+      Command sent by Reader	802A8E800F00000583010000000015000978005600
+      C-APDU	80 2A 8E 80 0F 00 00 05 - 83 01 00 00 00 00 15 00
+      C-APDU	09 78 00 56 00
+      COMPUTE_CRYPTOGRAPHIC_CHECKSUM	
+         CLA	80
+         INS	2A
+         P1	8E
+         P2	80
+         Lc	0F
+         Data	000005830100000000150009780056
+         Le	00
+      PURCH	(PayPass_CCC_UDOL)
+      R-APDU	77 0A 9F 61 02 A2 C4 9F - 36 02 03 F9 90 00
+      COMPUTE_CRYPTOGRAPHIC_CHECKSUM Emulated Response	
+         BERTLVData	770A9F6102A2C49F360203F9
+            77	#9Fa#02¢Ä#9F6#02#03ù
+               9F61	A2C4
+               9F36	03F9
+         CC	9000
+      Command sent by Reader	DEACTIVATION
+      PURCH	TestPoint
+      DEACTIVATION	
+      Card Model	
+         Header	
+            6F	840E325041592E5359532E4444463031A52BBF0C28610C4F07A0000000041010870101610C4F07A0000000043060870103610A4F05B012345678870109
+               84	325041592E5359532E4444463031
+               A5	BF0C28610C4F07A0000000041010870101610C4F07A0000000043060870103610A4F05B012345678870109
+                  BF0C	610C4F07A0000000041010870101610C4F07A0000000043060870103610A4F05B012345678870109
+                     61	4F07A0000000041010870101
+                        4F	A0000000041010
+                        87	01
+                     61	4F07A0000000043060870103
+                        4F	A0000000043060
+                        87	03
+                     61	4F05B012345678870109
+                        4F	B012345678
+                        87	09
+         ISF	
+         DF	
+            Header	
+               6F	8407A0000000041010A52A87010150074D41455354524F5F2D02656E9F1101019F380B9F02069F33039C019F0206BF0C045F530130
+                  84	A0000000041010
+                  A5	87010150074D41455354524F5F2D02656E9F1101019F380B9F02069F33039C019F0206BF0C045F530130
+                     87	01
+                     50	MAESTRO
+                     5F2D	en
+                     9F11	01
+                     9F38	9F02069F33039C019F0206
+                     BF0C	5F530130
+                        5F53	0
+            ISF	
+               82	0000000000000000
+                  I	0
+                  OSDAIS	0
+                  ODDAIS	0
+                  CVIS	0
+                  TRMITBP	0
+                  IAIS	0
+                  RFU	0
+                  CDAIS	0
+                  RFU	00000000
+               94	#08#01#01#00
+                  File	#08#01#01#00
+                     File Identifier	00001000
+                        SFI	00001
+                        RFU	000
+                     First_record	01
+                     Last_record	01
+                     Number_record	00
+            EF_1	
+               01	
+                  9F65	000E
+                  9F66	0E70
+                  9F6B	5413339000001513D49121019000990000000F
+                  9F67	03
+                  9F69	9F6A049F7E019F02065F2A029F1A02
+      TEMPORARY STATUS- PASS	
+      PROCESSING	
+      	The reader must send a first DEK before GetPO Command. The reader must send a second DEK before First ReadRecord Command. ------- The Reader must provide an OUT signal. ------- In Outcome Parameter Set, the following indication must be present: Status=ONLINE REQUEST  Did this processing perform correctly? (Yes=Pass;No=Fail)
+      RESPONSE- YES	
+      MAIN	TEST IS PASSED.
+      Test Passed	3GX2-0020(03_TagstoReadYet-PartialEmpty)  The test is PASSED

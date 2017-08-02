@@ -1,0 +1,223 @@
+Date : 2017-08-02 18:07:48
+   2017-08-02 18:06:39:766	Test Passed at : 2017-08-02 18:07:25:0310 ; 3GX2-0840(Empty-PTWF-Magstripe)  The test is PASSED
+      Test Started	3GX2-0840(Empty-PTWF-Magstripe)
+      ICC Interface 	Log Passing Data property set to False
+      SCRIPT_WRITER	5.63.00
+      PROFILE	not applicable
+      REFERENCE	3GX2-0840
+      REVISION	1.07
+      OBJECTIVE	To ensure the reader adds PTFWF into the DataNeeded list if tag is present but empty in the reader database
+      PASS CRITERIA	* After the ReadRecord Command, the reader shall send a DEK signal including an empty DataToSend template and DataNeeded template with PTFWF (tag 'DF8110'). * Upon reception of a DET containing the TLV PTFWF the reader shall send out a CCC command. * Upon reception of the card response to CCC the reader shall send an OUT Signal to the Terminal. In OPS, Status shall indicate 'ONLINE REQUEST'.
+      APPLICABILITY CONDITIONS	None
+      TERMINAL CONFIGURATION	PPMS_DE6
+      ISSUER PROCESSING	Please use the following XML file reference: 3GX2-0840
+      Command sent by Reader	
+      PURCH	COLD
+      CARD ACTIVATED	
+      Command sent by Reader	00A404000E325041592E5359532E444446303100
+      PURCH	WARM
+      C-APDU	00 A4 04 00 0E 32 50 41 - 59 2E 53 59 53 2E 44 44
+      C-APDU	46 30 31 00
+      SELECT	
+         CLA	00
+         INS	A4
+         P1	04
+         P2	00
+         Lc	0E
+         Data	
+            FID	325041592E5359532E4444463031
+         Le	00
+      PURCH	(PayPass_Select_PPSE_all)
+      R-APDU	6F 3D 84 0E 32 50 41 59 - 2E 53 59 53 2E 44 44 46
+      R-APDU	30 31 A5 2B BF 0C 28 61 - 0C 4F 07 A0 00 00 00 04
+      R-APDU	10 10 87 01 01 61 0C 4F - 07 A0 00 00 00 04 30 60
+      R-APDU	87 01 03 61 0A 4F 05 B0 - 12 34 56 78 87 01 09 90
+      R-APDU	00
+      SELECT Emulated Response	
+         BERTLVData	6F3D840E325041592E5359532E4444463031A52BBF0C28610C4F07A0000000041010870101610C4F07A0000000043060870103610A4F05B012345678870109
+            6F	840E325041592E5359532E4444463031A52BBF0C28610C4F07A0000000041010870101610C4F07A0000000043060870103610A4F05B012345678870109
+               84	325041592E5359532E4444463031
+               A5	BF0C28610C4F07A0000000041010870101610C4F07A0000000043060870103610A4F05B012345678870109
+                  BF0C	610C4F07A0000000041010870101610C4F07A0000000043060870103610A4F05B012345678870109
+                     61	4F07A0000000041010870101
+                        4F	A0000000041010
+                        87	01
+                     61	4F07A0000000043060870103
+                        4F	A0000000043060
+                        87	03
+                     61	4F05B012345678870109
+                        4F	B012345678
+                        87	09
+         CC	9000
+      Command sent by Reader	00A4040007A000000004101000
+      C-APDU	00 A4 04 00 07 A0 00 00 - 00 04 10 10 00
+      SELECT	
+         CLA	00
+         INS	A4
+         P1	04
+         P2	00
+         Lc	07
+         Data	
+            FID	A0000000041010
+         Le	00
+      PURCH	(PayPass_Select_MCD_PDOL)
+      R-APDU	6F 32 84 07 A0 00 00 00 - 04 10 10 A5 27 87 01 01
+      R-APDU	50 0A 4D 61 73 74 65 72 - 43 61 72 64 5F 2D 06 65
+      R-APDU	6E 64 65 66 72 9F 11 01 - 01 9F 38 08 9F 02 06 9F
+      R-APDU	33 03 9C 01 90 00
+      SELECT Emulated Response	
+         BERTLVData	6F328407A0000000041010A527870101500A4D6173746572436172645F2D06656E646566729F1101019F38089F02069F33039C01
+            6F	8407A0000000041010A527870101500A4D6173746572436172645F2D06656E646566729F1101019F38089F02069F33039C01
+               84	A0000000041010
+               A5	870101500A4D6173746572436172645F2D06656E646566729F1101019F38089F02069F33039C01
+                  87	01
+                  50	MasterCard
+                  5F2D	endefr
+                  9F11	01
+                  9F38	9F02069F33039C01
+         CC	9000
+      Command sent by Reader	80A800000C830A0000000015000000000000
+      C-APDU	80 A8 00 00 0C 83 0A 00 - 00 00 00 15 00 00 00 00
+      C-APDU	00 00
+      GET_PROCESSING_OPTIONS	
+         CLA	80
+         INS	A8
+         P1	00
+         P2	00
+         Lc	0C
+         PDOL	
+            Tag	83
+            Length	0A
+            Data	00000000150000000000
+         Le	00
+      PURCH	(PayPass_GPO_Mstripe_PDOL)
+      R-APDU	77 0A 82 02 00 00 94 04 - 08 01 01 00 90 00
+      GET_PROCESSING_OPTIONS Emulated Response	
+         BERTLVData	w#0A#82#02#00#00#94#04#08#01#01#00
+            77	#82#02#00#00#94#04#08#01#01#00
+               82	0000000000000000
+                  I	0
+                  OSDAIS	0
+                  ODDAIS	0
+                  CVIS	0
+                  TRMITBP	0
+                  IAIS	0
+                  RFU	0
+                  CDAIS	0
+                  RFU	00000000
+               94	#08#01#01#00
+                  File	#08#01#01#00
+                     File Identifier	00001000
+                        SFI	00001
+                        RFU	000
+                     First_record	01
+                     Last_record	01
+                     Number_record	00
+         CC	9000
+      Command sent by Reader	00B2010C00
+      C-APDU	00 B2 01 0C 00
+      READ_RECORD	
+         CLA	00
+         INS	B2
+         P1	01
+         P2	
+            SFI	00001
+            P1_Definition	100
+         Le	00
+      PURCH	(PayPass_RR_Mstripe_UDOL)
+      R-APDU	70 36 9F 65 02 00 0E 9F - 66 02 0E 70 9F 6B 13 54
+      R-APDU	13 33 90 00 00 15 13 D4 - 91 21 01 90 00 99 00 00
+      R-APDU	00 0F 9F 67 01 03 9F 69 - 0F 9F 6A 04 9F 7E 01 9F
+      R-APDU	02 06 5F 2A 02 9F 1A 02 - 90 00
+      READ_RECORD Emulated Response	
+         BERTLVData	70369F6502000E9F66020E709F6B135413339000001513D49121019000990000000F9F6701039F690F9F6A049F7E019F02065F2A029F1A02
+            70	9F6502000E9F66020E709F6B135413339000001513D49121019000990000000F9F6701039F690F9F6A049F7E019F02065F2A029F1A02
+               9F65	000E
+               9F66	0E70
+               9F6B	5413339000001513D49121019000990000000F
+               9F67	03
+               9F69	9F6A049F7E019F02065F2A029F1A02
+         CC	9000
+      Command sent by Reader	802A8E800F00000654010000000015000978005600
+      C-APDU	80 2A 8E 80 0F 00 00 06 - 54 01 00 00 00 00 15 00
+      C-APDU	09 78 00 56 00
+      COMPUTE_CRYPTOGRAPHIC_CHECKSUM	
+         CLA	80
+         INS	2A
+         P1	8E
+         P2	80
+         Lc	0F
+         Data	000006540100000000150009780056
+         Le	00
+      PURCH	(PayPass_CCC_UDOL_PCII)
+      Parsing warning	The Parsing warning "(6207000B) EMV_BERTLVParser: missing definition for Tag = DF4B" has been detected in node : "EMV_Card.IOBuffer.Emulated_Response.BERTLVData.77.DF4B".
+      R-APDU	77 10 9F 61 02 A2 C4 9F - 36 02 03 F9 DF 4B 03 00
+      R-APDU	10 00 90 00
+      COMPUTE_CRYPTOGRAPHIC_CHECKSUM Emulated Response	
+         BERTLVData	77109F6102A2C49F360203F9DF4B03001000
+            77	#9Fa#02¢Ä#9F6#02#03ùßK#03#00#10#00
+               9F61	A2C4
+               9F36	03F9
+               DF4B	#00#10#00
+         CC	9000
+      Command sent by Reader	DEACTIVATION
+      PURCH	TestPoint
+      DEACTIVATION	
+      Card Model	
+         Header	
+            6F	840E325041592E5359532E4444463031A52BBF0C28610C4F07A0000000041010870101610C4F07A0000000043060870103610A4F05B012345678870109
+               84	325041592E5359532E4444463031
+               A5	BF0C28610C4F07A0000000041010870101610C4F07A0000000043060870103610A4F05B012345678870109
+                  BF0C	610C4F07A0000000041010870101610C4F07A0000000043060870103610A4F05B012345678870109
+                     61	4F07A0000000041010870101
+                        4F	A0000000041010
+                        87	01
+                     61	4F07A0000000043060870103
+                        4F	A0000000043060
+                        87	03
+                     61	4F05B012345678870109
+                        4F	B012345678
+                        87	09
+         ISF	
+         DF	
+            Header	
+               6F	8407A0000000041010A527870101500A4D6173746572436172645F2D06656E646566729F1101019F38089F02069F33039C01
+                  84	A0000000041010
+                  A5	870101500A4D6173746572436172645F2D06656E646566729F1101019F38089F02069F33039C01
+                     87	01
+                     50	MasterCard
+                     5F2D	endefr
+                     9F11	01
+                     9F38	9F02069F33039C01
+            ISF	
+               82	0000000000000000
+                  I	0
+                  OSDAIS	0
+                  ODDAIS	0
+                  CVIS	0
+                  TRMITBP	0
+                  IAIS	0
+                  RFU	0
+                  CDAIS	0
+                  RFU	00000000
+               94	#08#01#01#00
+                  File	#08#01#01#00
+                     File Identifier	00001000
+                        SFI	00001
+                        RFU	000
+                     First_record	01
+                     Last_record	01
+                     Number_record	00
+            EF_1	
+               01	
+                  9F65	000E
+                  9F66	0E70
+                  9F6B	5413339000001513D49121019000990000000F
+                  9F67	03
+                  9F69	9F6A049F7E019F02065F2A029F1A02
+      TEMPORARY STATUS- PASS	
+      PROCESSING	
+      	The reader must send a DEK after ReadRecord Command ------- The Reader must provide an OUT signal. ------- In Outcome Parameter Set, the following indication must be present: Status=ONLINE REQUEST  Did this processing perform correctly? (Yes=Pass;No=Fail)
+      RESPONSE- YES	
+      MAIN	TEST IS PASSED.
+      Test Passed	3GX2-0840(Empty-PTWF-Magstripe)  The test is PASSED
