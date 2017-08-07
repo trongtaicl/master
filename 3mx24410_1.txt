@@ -1,0 +1,503 @@
+Date : 2017-08-07 18:30:34
+   2017-07-28 13:18:14:292	Test Passed at : 2017-07-28 13:19:33:9420 ; 3MX2-4410(01_GetDataS4)  The test is PASSED	
+      Test Started	3MX2-4410(01_GetDataS4)	2017-07-28 13:18:14:2920
+      ICC Interface 	Log Passing Data property set to False	2017-07-28 13:18:14:3750
+      SCRIPT_WRITER	5.63.00	2017-07-28 13:18:14:4310
+      PROFILE	not applicable	2017-07-28 13:18:14:4480
+      REFERENCE	3MX2-4410	2017-07-28 13:18:14:4700
+      REVISION	1.30	2017-07-28 13:18:14:4880
+      OBJECTIVE	To ensure the reader updates DataToSend with a tag with zero length if the response to GetData does not parse correctly.	2017-07-28 13:18:14:5190
+      PASS CRITERIA	For case 1,* After issuance of the First ReadRecord command, the reader shall send a DEK signal including DataToSend template containing the DEK Signal Identifier, Application Capability Information and empty DSID. DataNeeded template shall be empty.* After reception of the first ReadRecord response, the reader shall send out two GetData commands with Tag '9F75' and '9F76'* After issuance of the second ReadRecord, the reader shall send a DEK signal including DataToSend template containing empty UnProtectedDataEnvelope1 and UnProtectedDataEnvelope2 filled with 32 bytes having value '01' to '20'.For case 2,* After reception of the response to GetPO, The reader shall send out one GetData Command (To read UnProtectedDataEnvelope1)* After Issuance of the GetData command, the reader shall send a DEK signal including DataToSend template containing DEK Signal Identifier and Application Capability Information. DataNeeded template shall be empty.* After Issuance of first ReadRecord command, the reader shall send a DEK signal including DataToSend template containing UnProtectedDataEnvelope1 filled with 32 bytes having value '01' to '20'.* After reception of the first ReadRecord response, the reader shall send out two GetData command with Tag '9F76' and '9F75' (UnProtectedDataEnvelope1 and 2)* After issuance of the second ReadRecord, the reader shall send a DEK signal including DataToSend template containing UnProtectedDataEnvelope2 filled with 32 bytes having value '01' to '20' and empty UnProtectedDataEnvelope1.For case 3,* After issuance of the second ReadRecord, the reader shall send a DEK signal including DataToSend template containing the DEK Signal Identifier, Application Capability Information, empty DSID and PAN. DataNeeded template shall be empty.* Upon completion of all ReadRecord commands as per the AFL, the reader shall send a DEK signal including empty DataToSend template and DataNeeded template containing PTFWF* Upon reception of a DET signal containing PTFWF and TagsToRead, the reader shall send out a GetData command with Tag '9F75' (UnProtectedDataEnvelope1)* Upon reception of the card response to GetData, the reader shall send a DEK signal including DataToSend template containing empty UnProtectedDataEnvelope1. DataNeeded Template shall not be present.For all cases* Upon reception of the card response to GenAC, the reader shall send an OUT Signal to the Terminal. In OPS, Status shall indicate 'APPROVED' (i.e.: the transaction successfully completed).	2017-07-28 13:18:14:5380
+      APPLICABILITY CONDITIONS	None	2017-07-28 13:18:14:5640
+      TERMINAL CONFIGURATION	PPMC_DETTR_referce	2017-07-28 13:18:14:5830
+      ISSUER PROCESSING	Please use the following XML file reference: 3MX2-4410	2017-07-28 13:18:14:6150
+      Command sent by Reader		2017-07-28 13:18:35:6960
+      PURCH	COLD	2017-07-28 13:18:35:7290
+      CARD ACTIVATED		2017-07-28 13:18:35:7870
+      Command sent by Reader	00A404000E325041592E5359532E444446303100	2017-07-28 13:18:35:8330
+      PURCH	WARM	2017-07-28 13:18:35:8680
+      C-APDU	00 A4 04 00 0E 32 50 41 - 59 2E 53 59 53 2E 44 44	2017-07-28 13:18:35:8890
+      C-APDU	46 30 31 00	2017-07-28 13:18:35:8891
+      SELECT		2017-07-28 13:18:35:8900
+         CLA	00	
+         INS	A4	
+         P1	04	
+         P2	00	
+         Lc	0E	
+         Data		
+            FID	325041592E5359532E4444463031	
+         Le	00	
+      PURCH	(PayPass_Select_PPSE_all)	2017-07-28 13:18:35:9100
+      R-APDU	6F 3D 84 0E 32 50 41 59 - 2E 53 59 53 2E 44 44 46	2017-07-28 13:18:35:9800
+      R-APDU	30 31 A5 2B BF 0C 28 61 - 0C 4F 07 A0 00 00 00 04	2017-07-28 13:18:35:9810
+      R-APDU	10 10 87 01 01 61 0C 4F - 07 A0 00 00 00 04 30 60	2017-07-28 13:18:35:9820
+      R-APDU	87 01 03 61 0A 4F 05 B0 - 12 34 56 78 87 01 09 90	2017-07-28 13:18:35:9830
+      R-APDU	00	2017-07-28 13:18:35:9831
+      SELECT Emulated Response		2017-07-28 13:18:35:9832
+         BERTLVData	6F3D840E325041592E5359532E4444463031A52BBF0C28610C4F07A0000000041010870101610C4F07A0000000043060870103610A4F05B012345678870109	
+            6F	840E325041592E5359532E4444463031A52BBF0C28610C4F07A0000000041010870101610C4F07A0000000043060870103610A4F05B012345678870109	
+               84	325041592E5359532E4444463031	
+               A5	BF0C28610C4F07A0000000041010870101610C4F07A0000000043060870103610A4F05B012345678870109	
+                  BF0C	610C4F07A0000000041010870101610C4F07A0000000043060870103610A4F05B012345678870109	
+                     61	4F07A0000000041010870101	
+                        4F	A0000000041010	
+                        87	01	
+                     61	4F07A0000000043060870103	
+                        4F	A0000000043060	
+                        87	03	
+                     61	4F05B012345678870109	
+                        4F	B012345678	
+                        87	09	
+         CC	9000	
+      Command sent by Reader	00A4040007A000000004101000	2017-07-28 13:18:36:0750
+      C-APDU	00 A4 04 00 07 A0 00 00 - 00 04 10 10 00	2017-07-28 13:18:36:1330
+      SELECT		2017-07-28 13:18:36:1340
+         CLA	00	
+         INS	A4	
+         P1	04	
+         P2	00	
+         Lc	07	
+         Data		
+            FID	A0000000041010	
+         Le	00	
+      PURCH	(PayPass_Select_MCD_BFOC)	2017-07-28 13:18:36:1410
+      R-APDU	6F 3F 84 07 A0 00 00 00 - 04 10 10 A5 34 87 01 01	2017-07-28 13:18:36:2170
+      R-APDU	50 0A 4D 61 73 74 65 72 - 43 61 72 64 5F 2D 06 65	2017-07-28 13:18:36:2180
+      R-APDU	6E 64 65 66 72 9F 11 01 - 01 9F 38 08 9F 02 06 9F	2017-07-28 13:18:36:2190
+      R-APDU	33 03 9C 01 BF 0C 0A 9F - 5D 03 01 01 00 5F 53 01	2017-07-28 13:18:36:2200
+      R-APDU	10 90 00	2017-07-28 13:18:36:2201
+      SELECT Emulated Response		2017-07-28 13:18:36:2210
+         BERTLVData	6F3F8407A0000000041010A534870101500A4D6173746572436172645F2D06656E646566729F1101019F38089F02069F33039C01BF0C0A9F5D030101005F530110	
+            6F	8407A0000000041010A534870101500A4D6173746572436172645F2D06656E646566729F1101019F38089F02069F33039C01BF0C0A9F5D030101005F530110	
+               84	A0000000041010	
+               A5	870101500A4D6173746572436172645F2D06656E646566729F1101019F38089F02069F33039C01BF0C0A9F5D030101005F530110	
+                  87	01	
+                  50	MasterCard	
+                  5F2D	endefr	
+                  9F11	01	
+                  9F38	9F02069F33039C01	
+                  BF0C	9F5D030101005F530110	
+                     9F5D	#01#01#00	
+                     5F53	#10	
+         CC	9000	
+      Command sent by Reader	80A800000C830A0000000015000000080000	2017-07-28 13:18:36:3310
+      C-APDU	80 A8 00 00 0C 83 0A 00 - 00 00 00 15 00 00 00 08	2017-07-28 13:18:36:3790
+      C-APDU	00 00	2017-07-28 13:18:36:3800
+      GET_PROCESSING_OPTIONS		2017-07-28 13:18:36:3810
+         CLA	80	
+         INS	A8	
+         P1	00	
+         P2	00	
+         Lc	0C	
+         PDOL		
+            Tag	83	
+            Length	0A	
+            Data	00000000150000000800	
+         Le	00	
+      PURCH	(PayPass_GPO_Mchip_PDOL_CDA)	2017-07-28 13:18:36:3920
+      R-APDU	77 16 82 02 01 80 94 10 - 08 01 01 00 10 01 01 01	2017-07-28 13:18:36:4650
+      R-APDU	18 01 01 00 20 01 02 00 - 90 00	2017-07-28 13:18:36:4660
+      GET_PROCESSING_OPTIONS Emulated Response		2017-07-28 13:18:36:4670
+         BERTLVData	w#16#82#02#01#80#94#10#08#01#01#00#10#01#01#01#18#01#01#00 #01#02#00	
+            77	#82#02#01#80#94#10#08#01#01#00#10#01#01#01#18#01#01#00 #01#02#00	
+               82	0000000110000000	
+                  I	0	
+                  OSDAIS	0	
+                  ODDAIS	0	
+                  CVIS	0	
+                  TRMITBP	0	
+                  IAIS	0	
+                  RFU	0	
+                  CDAIS	1	
+                  RFU	10000000	
+               94	#08#01#01#00#10#01#01#01#18#01#01#00 #01#02#00	
+                  File	#08#01#01#00#10#01#01#01#18#01#01#00 #01#02#00	
+                     File Identifier	00001000	
+                        SFI	00001	
+                        RFU	000	
+                     First_record	01	
+                     Last_record	01	
+                     Number_record	00	
+                  File	#10#01#01#01#18#01#01#00 #01#02#00	
+                     File Identifier	00010000	
+                        SFI	00010	
+                        RFU	000	
+                     First_record	01	
+                     Last_record	01	
+                     Number_record	01	
+                  File	#18#01#01#00 #01#02#00	
+                     File Identifier	00011000	
+                        SFI	00011	
+                        RFU	000	
+                     First_record	01	
+                     Last_record	01	
+                     Number_record	00	
+                  File	 #01#02#00	
+                     File Identifier	00100000	
+                        SFI	00100	
+                        RFU	000	
+                     First_record	01	
+                     Last_record	02	
+                     Number_record	00	
+         CC	9000	
+      Command sent by Reader	00B2011400	2017-07-28 13:18:36:5650
+      C-APDU	00 B2 01 14 00	2017-07-28 13:18:36:6140
+      READ_RECORD		2017-07-28 13:18:36:6150
+         CLA	00	
+         INS	B2	
+         P1	01	
+         P2		
+            SFI	00010	
+            P1_Definition	100	
+         Le	00	
+      PURCH	(PayPass_RR_MChip_21)	2017-07-28 13:18:36:6240
+      WAIT	Waiting for 8000 milliseconds.	2017-07-28 13:18:36:6490
+      R-APDU	70 48 5F 24 03 49 12 31 - 5A 08 54 13 33 90 00 00	2017-07-28 13:18:44:5770
+      R-APDU	15 13 8C 0E 95 05 9F 02 - 06 9F 34 03 9F 33 03 9F	2017-07-28 13:18:44:5780
+      R-APDU	37 04 8E 0A 00 00 00 00 - 00 00 00 00 00 00 9F 0D	2017-07-28 13:18:44:5790
+      R-APDU	05 00 00 00 00 00 9F 0E - 05 00 00 00 00 00 9F 0F	2017-07-28 13:18:44:5800
+      R-APDU	05 00 00 00 00 00 9F 4A - 01 82 90 00	2017-07-28 13:18:44:5810
+      READ_RECORD Emulated Response		2017-07-28 13:18:44:5811
+         BERTLVData	70485F24034912315A0854133390000015138C0E95059F02069F34039F33039F37048E0A000000000000000000009F0D0500000000009F0E0500000000009F0F0500000000009F4A0182	
+            70	5F24034912315A0854133390000015138C0E95059F02069F34039F33039F37048E0A000000000000000000009F0D0500000000009F0E0500000000009F0F0500000000009F4A0182	
+               5F24	491231	
+               5A	5413339000001513	
+               8C	95059F02069F34039F33039F3704	
+               8E	00000000000000000000	
+                  Amount_X	00000000	
+                  Amount_Y	00000000	
+                  CVM	0000	
+                     CVM_Method_Codes	00000000	
+                        bit8	0	
+                        bit7	0	
+                        CVM_Method	Fail	
+                     CVM_Conditions	Always	
+               9F0D	0000000000	
+                  Byte	00	
+                  Byte	00	
+                  Byte	00	
+                  Byte	00	
+                  Byte	00	
+               9F0E	0000000000	
+                  Byte	00	
+                  Byte	00	
+                  Byte	00	
+                  Byte	00	
+                  Byte	00	
+               9F0F	0000000000	
+                  Byte	00	
+                  Byte	00	
+                  Byte	00	
+                  Byte	00	
+                  Byte	00	
+               9F4A	82	
+         CC	9000	
+      Command sent by Reader	80CA9F7500	2017-07-28 13:18:44:7150
+      C-APDU	80 CA 9F 75 00	2017-07-28 13:18:44:7670
+      GET_DATA		2017-07-28 13:18:44:7680
+         CLA	80	
+         INS	CA	
+         TAG	9F75	
+         Le	00	
+      PURCH	(PayPass_GetData_DE)	2017-07-28 13:18:44:7760
+      Parsing warning	The Parsing warning "(62070012) RAW2HEX: remaining data after processing RAW2HEX" has been detected in node : "EMV_Card.IOBuffer.Emulated_Response.BERTLVData.9F75".	2017-07-28 13:18:44:8430
+      Parsing warning	The Parsing warning "(62070012) RAW2HEX: remaining data after processing RAW2HEX" has been detected in node : "EMV_Card.IOBuffer.Emulated_Response.BERTLVData.9F76".	2017-07-28 13:18:44:8440
+      R-APDU	9F 75 20 01 02 03 04 05 - 06 07 08 09 0A 0B 0C 0D	2017-07-28 13:18:44:8470
+      R-APDU	0E 0F 10 11 12 13 14 15 - 16 17 18 19 1A 1B 1C 1D	2017-07-28 13:18:44:8480
+      R-APDU	1E 1F 20 9F 76 20 01 02 - 03 04 05 06 07 08 09 0A	2017-07-28 13:18:44:8490
+      R-APDU	0B 0C 0D 0E 0F 10 11 12 - 13 14 15 16 17 18 19 1A	2017-07-28 13:18:44:8500
+      R-APDU	1B 1C 1D 1E 1F 20 90 00	2017-07-28 13:18:44:8510
+      GET_DATA Emulated Response		2017-07-28 13:18:44:8511
+         Data	9F75200102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F209F76200102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F20	
+         CC	9000	
+      Command sent by Reader	80CA9F7600	2017-07-28 13:18:44:9790
+      C-APDU	80 CA 9F 76 00	2017-07-28 13:18:45:0350
+      GET_DATA		2017-07-28 13:18:45:0360
+         CLA	80	
+         INS	CA	
+         TAG	9F76	
+         Le	00	
+      PURCH	(DRV_PayPass_GetData_DE2)	2017-07-28 13:18:45:0440
+      Parsing warning	The Parsing warning "(62070012) RAW2HEX: remaining data after processing RAW2HEX" has been detected in node : "EMV_Card.IOBuffer.Emulated_Response.BERTLVData.9F76".	2017-07-28 13:18:45:1140
+      R-APDU	9F 76 20 01 02 03 04 05 - 06 07 08 09 0A 0B 0C 0D	2017-07-28 13:18:45:1180
+      R-APDU	0E 0F 10 11 12 13 14 15 - 16 17 18 19 1A 1B 1C 1D	2017-07-28 13:18:45:1190
+      R-APDU	1E 1F 20 90 00	2017-07-28 13:18:45:1200
+      GET_DATA Emulated Response		2017-07-28 13:18:45:1201
+         Data	9F76200102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F20	
+         CC	9000	
+      Command sent by Reader	00B2011C00	2017-07-28 13:18:45:2400
+      C-APDU	00 B2 01 1C 00	2017-07-28 13:18:45:3040
+      READ_RECORD		2017-07-28 13:18:45:3050
+         CLA	00	
+         INS	B2	
+         P1	01	
+         P2		
+            SFI	00011	
+            P1_Definition	100	
+         Le	00	
+      PURCH	(PayPass_RR_MChip_31)	2017-07-28 13:18:45:3120
+      R-APDU	70 81 AE 9F 32 01 03 92 - 22 49 65 6A E4 3F 49 4B	2017-07-28 13:18:45:4310
+      R-APDU	FA 14 3C 07 5B 1E 08 B7 - C3 49 F2 B5 90 32 4D 03	2017-07-28 13:18:45:4320
+      R-APDU	08 8E 45 37 C6 D0 D9 A6 - 10 8B F7 90 81 80 04 A2	2017-07-28 13:18:45:4330
+      R-APDU	5F C9 C6 9B 0F C0 69 A7 - 76 CE 3F 26 8F C5 BB 41	2017-07-28 13:18:45:4340
+      R-APDU	E5 9E 41 92 3E D3 ED AE - 18 D2 3D 58 7C 0D 21 7D	2017-07-28 13:18:45:4350
+      R-APDU	DD B1 51 17 A2 58 2A 32 - 1A AE A4 6C 8B A9 4D 65	2017-07-28 13:18:45:4360
+      R-APDU	80 E6 BB 54 48 91 A5 9E - A2 E4 0F F5 A6 27 76 0B	2017-07-28 13:18:45:4361
+      R-APDU	7F 2D 28 DF FC 0E 68 28 - DE 41 70 14 08 FA E0 21	2017-07-28 13:18:45:4370
+      R-APDU	A5 C9 F9 C7 C0 DA C1 45 - D0 A4 40 EF A6 6D DF DA	2017-07-28 13:18:45:4380
+      R-APDU	4E 38 D0 1F E8 12 29 4E - F2 BE 4E 05 73 79 7C AF	2017-07-28 13:18:45:4390
+      R-APDU	48 3A 85 11 1A 37 EA 78 - 2F BA AF 3C CC 0D 8F 01	2017-07-28 13:18:45:4400
+      R-APDU	F8 90 00	2017-07-28 13:18:45:4410
+      READ_RECORD Emulated Response		2017-07-28 13:18:45:4411
+         BERTLVData	7081AE9F320103922249656AE43F494BFA143C075B1E08B7C349F2B590324D03088E4537C6D0D9A6108BF790818004A25FC9C69B0FC069A776CE3F268FC5BB41E59E41923ED3EDAE18D23D587C0D217DDDB15117A2582A321AAEA46C8BA94D6580E6BB544891A59EA2E40FF5A627760B7F2D28DFFC0E6828DE41701408FAE021A5C9F9C7C0DAC145D0A440EFA66DDFDA4E38D01FE812294EF2BE4E0573797CAF483A85111A37EA782FBAAF3CCC0D8F01F8	
+            70	9F320103922249656AE43F494BFA143C075B1E08B7C349F2B590324D03088E4537C6D0D9A6108BF790818004A25FC9C69B0FC069A776CE3F268FC5BB41E59E41923ED3EDAE18D23D587C0D217DDDB15117A2582A321AAEA46C8BA94D6580E6BB544891A59EA2E40FF5A627760B7F2D28DFFC0E6828DE41701408FAE021A5C9F9C7C0DAC145D0A440EFA66DDFDA4E38D01FE812294EF2BE4E0573797CAF483A85111A37EA782FBAAF3CCC0D8F01F8	
+               9F32	03	
+               92	49656AE43F494BFA143C075B1E08B7C349F2B590324D03088E4537C6D0D9A6108BF7	
+               90	04A25FC9C69B0FC069A776CE3F268FC5BB41E59E41923ED3EDAE18D23D587C0D217DDDB15117A2582A321AAEA46C8BA94D6580E6BB544891A59EA2E40FF5A627760B7F2D28DFFC0E6828DE41701408FAE021A5C9F9C7C0DAC145D0A440EFA66DDFDA4E38D01FE812294EF2BE4E0573797CAF483A85111A37EA782FBAAF3CCC0D	
+               8F	F8	
+         CC	9000	
+      Command sent by Reader	00B2012400	2017-07-28 13:18:45:6080
+      C-APDU	00 B2 01 24 00	2017-07-28 13:18:45:6700
+      READ_RECORD		2017-07-28 13:18:45:6710
+         CLA	00	
+         INS	B2	
+         P1	01	
+         P2		
+            SFI	00100	
+            P1_Definition	100	
+         Le	00	
+      PURCH	(PayPass_RR_MChip_41)	2017-07-28 13:18:45:6790
+      R-APDU	70 2F 9F 47 01 03 9F 48 - 28 74 40 84 A4 99 FA F9	2017-07-28 13:18:45:8080
+      R-APDU	6F EF C6 CC 54 F8 CF AF - 51 D4 32 F1 D2 27 3C 9B	2017-07-28 13:18:45:8090
+      R-APDU	50 D1 B0 D8 F9 1E A1 7F - 1B 37 3F FD C0 E1 E9 F8	2017-07-28 13:18:45:8100
+      R-APDU	2F 90 00	2017-07-28 13:18:45:8101
+      READ_RECORD Emulated Response		2017-07-28 13:18:45:8110
+         BERTLVData	702F9F4701039F4828744084A499FAF96FEFC6CC54F8CFAF51D432F1D2273C9B50D1B0D8F91EA17F1B373FFDC0E1E9F82F	
+            70	9F4701039F4828744084A499FAF96FEFC6CC54F8CFAF51D432F1D2273C9B50D1B0D8F91EA17F1B373FFDC0E1E9F82F	
+               9F47	03	
+               9F48	744084A499FAF96FEFC6CC54F8CFAF51D432F1D2273C9B50D1B0D8F91EA17F1B373FFDC0E1E9F82F	
+         CC	9000	
+      Command sent by Reader	00B2022400	2017-07-28 13:18:45:9710
+      C-APDU	00 B2 02 24 00	2017-07-28 13:18:46:0400
+      READ_RECORD		2017-07-28 13:18:46:0410
+         CLA	00	
+         INS	B2	
+         P1	02	
+         P2		
+            SFI	00100	
+            P1_Definition	100	
+         Le	00	
+      PURCH	(PayPass_RR_MChip_42)	2017-07-28 13:18:46:0480
+      R-APDU	70 81 81 9F 46 7E 0F FE - E4 A5 EF 0F CF 9E 6B 0C	2017-07-28 13:18:46:1330
+      R-APDU	91 29 18 3E 6B F6 EA C1 - DA CB 5E A8 CD C3 FC 80	2017-07-28 13:18:46:1340
+      R-APDU	58 7E BB C2 2F F9 DD CC - 8F 76 89 53 95 25 47 0F	2017-07-28 13:18:46:1341
+      R-APDU	80 89 E2 83 BD CB 50 00 - B9 73 EE 22 9D 8F D3 5F	2017-07-28 13:18:46:1350
+      R-APDU	C6 AA 9B 05 E5 56 FA EB - D2 53 3E F9 08 19 51 1F	2017-07-28 13:18:46:1360
+      R-APDU	B5 A0 2E C9 46 D6 92 6D - 08 89 79 81 41 4D D6 05	2017-07-28 13:18:46:1370
+      R-APDU	00 0E A1 EB 28 8D 03 3E - CC E4 8E FC 82 24 C1 C5	2017-07-28 13:18:46:1380
+      R-APDU	EB E2 E3 FE 44 76 F2 F0 - F4 03 3B 6C C2 70 73 09	2017-07-28 13:18:46:1390
+      R-APDU	24 DF BE 4B 90 00	2017-07-28 13:18:46:1391
+      READ_RECORD Emulated Response		2017-07-28 13:18:46:1400
+         BERTLVData	7081819F467E0FFEE4A5EF0FCF9E6B0C9129183E6BF6EAC1DACB5EA8CDC3FC80587EBBC22FF9DDCC8F7689539525470F8089E283BDCB5000B973EE229D8FD35FC6AA9B05E556FAEBD2533EF90819511FB5A02EC946D6926D08897981414DD605000EA1EB288D033ECCE48EFC8224C1C5EBE2E3FE4476F2F0F4033B6CC270730924DFBE4B	
+            70	9F467E0FFEE4A5EF0FCF9E6B0C9129183E6BF6EAC1DACB5EA8CDC3FC80587EBBC22FF9DDCC8F7689539525470F8089E283BDCB5000B973EE229D8FD35FC6AA9B05E556FAEBD2533EF90819511FB5A02EC946D6926D08897981414DD605000EA1EB288D033ECCE48EFC8224C1C5EBE2E3FE4476F2F0F4033B6CC270730924DFBE4B	
+               9F46	0FFEE4A5EF0FCF9E6B0C9129183E6BF6EAC1DACB5EA8CDC3FC80587EBBC22FF9DDCC8F7689539525470F8089E283BDCB5000B973EE229D8FD35FC6AA9B05E556FAEBD2533EF90819511FB5A02EC946D6926D08897981414DD605000EA1EB288D033ECCE48EFC8224C1C5EBE2E3FE4476F2F0F4033B6CC270730924DFBE4B	
+         CC	9000	
+      Command sent by Reader	80AE50001500000000010000000015003F0000006008F544FF9000	2017-07-28 13:18:46:3080
+      C-APDU	80 AE 50 00 15 00 00 00 - 00 01 00 00 00 00 15 00	2017-07-28 13:18:46:3820
+      C-APDU	3F 00 00 00 60 08 F5 44 - FF 90 00	2017-07-28 13:18:46:3830
+      GENERATE_AC		2017-07-28 13:18:46:3840
+         CLA	80	
+         INS	AE	
+         P1	TC_CDA	
+         P2	00	
+         Lc	15	
+         CDOL	#00#00#00#00#01#00#00#00#00#15#00?#00#00#00`#08õDÿ#90	
+            95		
+               Byte_1		
+                  bit 8	0	
+                  bit 7	0	
+                  bit 6	0	
+                  bit 5	0	
+                  bit 4	0	
+                  bit 3	0	
+                  rfu	00	
+               Byte_2		
+                  bit 8	0	
+                  bit 7	0	
+                  bit 6	0	
+                  bit 5	0	
+                  bit 4	0	
+                  rfu	000	
+               Byte_3		
+                  bit 8	0	
+                  bit 7	0	
+                  bit 6	0	
+                  bit 5	0	
+                  bit 4	0	
+                  bit 3	0	
+                  rfu	00	
+               Byte_4		
+                  bit 8	0	
+                  bit 7	0	
+                  bit 6	0	
+                  bit 5	0	
+                  bit 4	0	
+                  rfu	000	
+               Byte_5		
+                  bit 8	0	
+                  bit 7	0	
+                  bit 6	0	
+                  bit 5	0	
+                  rfu	0001	
+            9F02	000000001500	
+            9F34	3F0000	
+            9F33	006008	
+            9F37	F544FF90	
+         Le	00	
+      PURCH	(PayPass_GenAC_TC_CDA)	2017-07-28 13:18:46:3940
+      R-APDU	77 81 88 9F 27 01 40 9F - 36 02 00 02 9F 4B 7C 6E	2017-07-28 13:18:46:5260
+      R-APDU	3B D5 E5 9C 56 A5 39 7E - 09 04 B0 15 D9 E3 1A 42	2017-07-28 13:18:46:5270
+      R-APDU	D1 3F 58 47 00 3B E5 DC - 37 BD EE F5 37 6C 10 A0	2017-07-28 13:18:46:5280
+      R-APDU	48 E4 15 63 42 2D EF 26 - 42 4D AF A0 B1 EA CB FE	2017-07-28 13:18:46:5290
+      R-APDU	8D 79 4E 84 08 5E DA 28 - 26 00 24 C5 1E 39 B7 CE	2017-07-28 13:18:46:5300
+      R-APDU	53 8F 0C BE 45 43 68 E1 - DE 72 28 56 74 4A 0D 7D	2017-07-28 13:18:46:5310
+      R-APDU	AC A7 00 98 7B 5D 0A 1A - 9D 60 8D 73 5B D1 41 CA	2017-07-28 13:18:46:5320
+      R-APDU	F4 AD 77 0F 85 45 3C C9 - 85 47 34 24 4C C4 4D 4C	2017-07-28 13:18:46:5321
+      R-APDU	01 8F 3A B6 F9 E2 B5 39 - FA 37 74 90 00	2017-07-28 13:18:46:5330
+      GENERATE_AC Emulated Response		2017-07-28 13:18:46:5340
+         BERTLVData	7781889F2701409F360200029F4B7C6E3BD5E59C56A5397E0904B015D9E31A42D13F5847003BE5DC37BDEEF5376C10A048E41563422DEF26424DAFA0B1EACBFE8D794E84085EDA28260024C51E39B7CE538F0CBE454368E1DE722856744A0D7DACA700987B5D0A1A9D608D735BD141CAF4AD770F85453CC9854734244CC44D4C018F3AB6F9E2B539FA3774	
+            77	#9F'#01@#9F6#02#00#02#9FK|n;Õå#9CV¥9~#09#04°#15Ùã#1ABÑ?XG#00;åÜ7½îõ7l#10 Hä#15cB-ï&BM¯ ±êËþ#8DyN#84#08^Ú(&#00$Å#1E9·ÎS#8F#0C¾ECháÞr(VtJ#0D}¬§#00#98{]#0A#1A#9D`#8Ds[ÑAÊô­w#0F#85E<É#85G4$LÄML#01#8F:¶ùâµ9ú7t	
+               9F27	01000000	
+                  Reference_Control_Parameter	TC	
+                  RFU	00	
+                  Advice_Required	0	
+                  Referral_Code	No Information given	
+               9F36	0002	
+               9F4B	6E3BD5E59C56A5397E0904B015D9E31A42D13F5847003BE5DC37BDEEF5376C10A048E41563422DEF26424DAFA0B1EACBFE8D794E84085EDA28260024C51E39B7CE538F0CBE454368E1DE722856744A0D7DACA700987B5D0A1A9D608D735BD141CAF4AD770F85453CC9854734244CC44D4C018F3AB6F9E2B539FA3774	
+         CC	9000	
+      Command sent by Reader	DEACTIVATION	2017-07-28 13:18:46:7410
+      PURCH	TestPoint	2017-07-28 13:18:46:7490
+      DEACTIVATION		2017-07-28 13:18:46:8020
+      Card Model		2017-07-28 13:18:46:8050
+         Header		
+            6F	840E325041592E5359532E4444463031A52BBF0C28610C4F07A0000000041010870101610C4F07A0000000043060870103610A4F05B012345678870109	
+               84	325041592E5359532E4444463031	
+               A5	BF0C28610C4F07A0000000041010870101610C4F07A0000000043060870103610A4F05B012345678870109	
+                  BF0C	610C4F07A0000000041010870101610C4F07A0000000043060870103610A4F05B012345678870109	
+                     61	4F07A0000000041010870101	
+                        4F	A0000000041010	
+                        87	01	
+                     61	4F07A0000000043060870103	
+                        4F	A0000000043060	
+                        87	03	
+                     61	4F05B012345678870109	
+                        4F	B012345678	
+                        87	09	
+         ISF		
+         DF		
+            Header		
+               6F	8407A0000000041010A534870101500A4D6173746572436172645F2D06656E646566729F1101019F38089F02069F33039C01BF0C0A9F5D030101005F530110	
+                  84	A0000000041010	
+                  A5	870101500A4D6173746572436172645F2D06656E646566729F1101019F38089F02069F33039C01BF0C0A9F5D030101005F530110	
+                     87	01	
+                     50	MasterCard	
+                     5F2D	endefr	
+                     9F11	01	
+                     9F38	9F02069F33039C01	
+                     BF0C	9F5D030101005F530110	
+                        9F5D	#01#01#00	
+                        5F53	#10	
+            ISF		
+               82	0000000110000000	
+                  I	0	
+                  OSDAIS	0	
+                  ODDAIS	0	
+                  CVIS	0	
+                  TRMITBP	0	
+                  IAIS	0	
+                  RFU	0	
+                  CDAIS	1	
+                  RFU	10000000	
+               94	#08#01#01#00#10#01#01#01#18#01#01#00 #01#02#00	
+                  File	#08#01#01#00#10#01#01#01#18#01#01#00 #01#02#00	
+                     File Identifier	00001000	
+                        SFI	00001	
+                        RFU	000	
+                     First_record	01	
+                     Last_record	01	
+                     Number_record	00	
+                  File	#10#01#01#01#18#01#01#00 #01#02#00	
+                     File Identifier	00010000	
+                        SFI	00010	
+                        RFU	000	
+                     First_record	01	
+                     Last_record	01	
+                     Number_record	01	
+                  File	#18#01#01#00 #01#02#00	
+                     File Identifier	00011000	
+                        SFI	00011	
+                        RFU	000	
+                     First_record	01	
+                     Last_record	01	
+                     Number_record	00	
+                  File	 #01#02#00	
+                     File Identifier	00100000	
+                        SFI	00100	
+                        RFU	000	
+                     First_record	01	
+                     Last_record	02	
+                     Number_record	00	
+               9F36	0002	
+            EF_1		
+               01		
+            EF_2		
+               01		
+                  5F24	491231	
+                  5A	5413339000001513	
+                  8C	95059F02069F34039F33039F3704	
+                  8E	00000000000000000000	
+                     Amount_X	00000000	
+                     Amount_Y	00000000	
+                     CVM	0000	
+                        CVM_Method_Codes	00000000	
+                           bit8	0	
+                           bit7	0	
+                           CVM_Method	Fail	
+                        CVM_Conditions	Always	
+                  9F0D	0000000000	
+                     Byte	00	
+                     Byte	00	
+                     Byte	00	
+                     Byte	00	
+                     Byte	00	
+                  9F0E	0000000000	
+                     Byte	00	
+                     Byte	00	
+                     Byte	00	
+                     Byte	00	
+                     Byte	00	
+                  9F0F	0000000000	
+                     Byte	00	
+                     Byte	00	
+                     Byte	00	
+                     Byte	00	
+                     Byte	00	
+                  9F4A	82	
+            EF_3		
+               01		
+                  9F32	03	
+                  92	49656AE43F494BFA143C075B1E08B7C349F2B590324D03088E4537C6D0D9A6108BF7	
+                  90	04A25FC9C69B0FC069A776CE3F268FC5BB41E59E41923ED3EDAE18D23D587C0D217DDDB15117A2582A321AAEA46C8BA94D6580E6BB544891A59EA2E40FF5A627760B7F2D28DFFC0E6828DE41701408FAE021A5C9F9C7C0DAC145D0A440EFA66DDFDA4E38D01FE812294EF2BE4E0573797CAF483A85111A37EA782FBAAF3CCC0D	
+                  8F	F8	
+            EF_4		
+               01		
+                  9F47	03	
+                  9F48	744084A499FAF96FEFC6CC54F8CFAF51D432F1D2273C9B50D1B0D8F91EA17F1B373FFDC0E1E9F82F	
+               02		
+                  9F46	0FFEE4A5EF0FCF9E6B0C9129183E6BF6EAC1DACB5EA8CDC3FC80587EBBC22FF9DDCC8F7689539525470F8089E283BDCB5000B973EE229D8FD35FC6AA9B05E556FAEBD2533EF90819511FB5A02EC946D6926D08897981414DD605000EA1EB288D033ECCE48EFC8224C1C5EBE2E3FE4476F2F0F4033B6CC270730924DFBE4B	
+      TEMPORARY STATUS- PASS		2017-07-28 13:18:46:8410
+      PROCESSING		2017-07-28 13:18:46:8930
+      	The reader must send a first DEK after First ReadRecord Command. The reader must send a second DEK after issuance of the second Read Record Command ------- The Reader must provide an OUT signal. ------- In Outcome Parameter Set, the following indication must be present: Status=APPROVED  Did this processing perform correctly? (Yes=Pass;No=Fail)	2017-07-28 13:18:46:9440
+      RESPONSE- YES		2017-07-28 13:19:33:8280
+      MAIN	TEST IS PASSED.	2017-07-28 13:19:33:8850
+      Test Passed	3MX2-4410(01_GetDataS4)  The test is PASSED	2017-07-28 13:19:33:9420
